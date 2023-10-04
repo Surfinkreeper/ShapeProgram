@@ -18,8 +18,12 @@ double Shape::getPerimeter() const {
     return 0;
 }
 
-void Shape::print() const {
-    cout << "Type: " << type << "\nColor: " << color << "\nArea: " << getArea()  << "\nPerimeter: " << getPerimeter();
+string Shape::getType() const {
+    return type;
+}
+
+string Shape::getColor() const {
+    return color;
 }
 
 void Shape::setColor(string c) {
@@ -27,7 +31,7 @@ void Shape::setColor(string c) {
 }
 
 bool Shape::operator==(const Shape& other) const {
-    return (type == other.type) && (getArea() == other.getArea()) && (color == other.color);
+    return ((type == other.getType()) && (getArea() == other.getArea()) && (color == other.getColor()));
 }
 
 bool Shape::operator!=(const Shape& other) const {

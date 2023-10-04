@@ -11,11 +11,17 @@ class Shape {
     public:
         Shape();
         Shape(const string t, string c);
-        virtual ~Shape();
+        virtual ~Shape() {}
 
         virtual double getArea() const;
         virtual double getPerimeter() const;
-        virtual void print() const;
+        string getType() const;
+        string getColor() const;
+
+        friend ostream& operator<<(ostream& os, const Shape* shape) {
+            os << "Type: " << shape->getType() << "\nColor: " << shape->getColor() << "\nArea: " << shape->getArea() << "\nPerimeter: " << shape->getPerimeter() << endl << endl;
+            return os;
+        }
 
         void setColor(string c);
 
@@ -60,7 +66,6 @@ class RightTriangle : public Shape {
         double getPerimeter() const override;
         void setDimensions(double newB, double newH);
     private:
-        double getHypot(double base, double height);
         double base;
         double height;
 };
